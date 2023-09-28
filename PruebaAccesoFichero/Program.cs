@@ -15,6 +15,7 @@ namespace PrebaAccesoFichero
             string texto;
             while(opcion != 0)
             {
+
                 Console.WriteLine("1-Escribri binario");
                 Console.WriteLine("2-Leer binario");
                 Console.WriteLine("3-Escribir Texto");
@@ -76,7 +77,7 @@ namespace PrebaAccesoFichero
                     writer = new StreamWriter(fichero, Encoding.UTF8);
                     //Guardamos datos en Texto 25 47 83 29 208
 
-                    writer.WriteLine("Guardamos datos en Texto " + 25 +", " + 47 + ", " + 83 + ", " + 29 + ", " + 208);
+                    writer.WriteLine("Texto " + 25 +"," + 47 + "," + 83 + "," + 29 + "," + 208);
 
                     writer.Close();
                 }
@@ -86,12 +87,33 @@ namespace PrebaAccesoFichero
                     FileStream fichero;
 
                     string dato;
+                    string[] parts;
+                    string[] partsn;
 
                     fichero = new FileStream("DatosTexto.txt", FileMode.Open, FileAccess.Read);
                     reader = new StreamReader(fichero, Encoding.UTF8);
 
                     dato = reader.ReadLine();
-                    Console.WriteLine(dato);
+                    parts = dato.Split(" ");
+                    
+                    Console.WriteLine("Despues de partir con espacio:\n");
+                    Console.WriteLine("Primera parte: " + parts[0]);
+                    Console.WriteLine("Segunda parte: " + parts[1]);
+
+                    partsn = parts[1].Split(",");
+
+                    Console.WriteLine("Despues de partir con \",\":\n");
+                    Console.WriteLine();
+
+                    Console.WriteLine(partsn[0]);
+                    Console.WriteLine(partsn[1]);
+                    Console.WriteLine(partsn[2]);
+                    Console.WriteLine(partsn[3]);
+                    Console.WriteLine(partsn[4]);
+
+                    int i = Convert.ToInt32(partsn[0]) + Convert.ToInt32(partsn[1]);
+                    Console.WriteLine("Suma de los dos nuemros: "+ i);
+                    Console.WriteLine(dato+"\n");
                     reader.Close();
 
 
