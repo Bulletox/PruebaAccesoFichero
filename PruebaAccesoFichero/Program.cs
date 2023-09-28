@@ -18,7 +18,7 @@ namespace PrebaAccesoFichero
                 Console.WriteLine("1-Escribri binario");
                 Console.WriteLine("2-Leer binario");
                 Console.WriteLine("3-Escribir Texto");
-                Console.WriteLine("4-");
+                Console.WriteLine("4-Leer Texto");
                 Console.WriteLine("0-Cerrar");
 
                 texto = Console.ReadLine();
@@ -76,9 +76,25 @@ namespace PrebaAccesoFichero
                     writer = new StreamWriter(fichero, Encoding.UTF8);
                     //Guardamos datos en Texto 25 47 83 29 208
 
-                    writer.WriteLine("Guardamos datos en Texto"+ "," + 25 +"," + 47 + "," + 83 + "," + 29 + "," + 208);
+                    writer.WriteLine("Guardamos datos en Texto " + 25 +", " + 47 + ", " + 83 + ", " + 29 + ", " + 208);
 
                     writer.Close();
+                }
+                else if(opcion == 4)
+                {
+                    StreamReader reader;
+                    FileStream fichero;
+
+                    string dato;
+
+                    fichero = new FileStream("DatosTexto.txt", FileMode.Open, FileAccess.Read);
+                    reader = new StreamReader(fichero, Encoding.UTF8);
+
+                    dato = reader.ReadLine();
+                    Console.WriteLine(dato);
+                    reader.Close();
+
+
                 }
             }
         }
